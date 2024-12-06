@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    background-color: #050510;
+    color: rgb(255, 255, 255);
+    font-family: cursive;
+    overflow-x: hidden;
+}
+
+li, ul {
+    list-style-type: none;
+}
+
+.content {
+    width: 650px;
+    border: #460000 4px solid;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h {
+    font-size: xx-large;
+    background-color: red;
+}
+
+.bewegende-text {
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: yellow;
+}
+
+.div2 {
+    width: 650px;
+    border: #460000 4px solid;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.div3 {
+    width: 650px;
+    border: #460000 4px solid;
+    margin: auto;
+    text-align: center;
+}
+
+.knop {
+    padding: 3px 14px;
+    font-size: large;
+    font-family: cursive;
+    outline-color: #fff;
+    cursor: pointer;
+    z-index: 0;
+    position: relative;
+    size: 0;
+    background-color: #ff11009f;
+    transition: 0.1s ease;
+}
+
+div.div3>a {
+    text-decoration: none;
+}
+
+.knop:hover {
+    background-color: #ffa500;
+    scale: 1.05;
+}
+
+.div4 {
+    width: 650px;
+    height: 300px;
+    border: #460000 4px solid;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.banner1 {
+    top: 30px;
+    right: 0;
+    position: absolute;
+    scale: 0.23;
+}
+
+.banner2 {
+    top: 30px;
+    left: 0;
+    position: absolute;
+    scale: 0.24;
+}
+
+.link {
+    width: 30px;
+    height: 30px;
+    transition: 0.1s ease-out;
+}
+
+.link:hover {
+    scale: 1.3;
+}
+
+marquee>a {
+    color: inherit;
+}
+
+.links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.musicbutton{
+    margin: 3px;
+    top: 30px;
+    left: 100px;
+    border-color: rgb(124, 11, 11);
+    scale: 1.5;
+    font-size: large;
+    font-family: cursive;
+    outline-color: #fff;
+    cursor: pointer;
+    z-index: 0;
+    position: absolute;
+    size: 0;
+    background-color: #e16e6e8c;
+    transition: 0.1s ease;
+    
+}
+
+.musicbutton:hover {
+    background-color: #ffa500;
+    scale: 1.05;
+}
+
+div.musicbutton>a {
+    text-decoration: none;
+}
+
+.bg{
+    background-image: url(https://easyfiles.cc/2024/12/120854f7-4256-4dbf-b392-3e36e57af9ff/8530bdc8359eeb15f4e2d242f3dade07[1].gif);
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* discord what I'm doing.css */
+
+
+  .profile-card {
+    background-color: #7012125e;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 36px rgba(165, 8, 8, 0.841);
+    
+  }
+  
+  .avatar-container {
+    position: relative;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  
+  .status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #23272a;
+    background-color: #43b581; /* Default to online */
+  }
+  
+  .profile-info {
+    margin-left: 15px;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #b9bbbe;
+  }
+  
+  /* Status Colors */
+  .status-online {
+    background-color: #43b581;
+  }
+  
+  .status-idle {
+    background-color: #faa61a;
+  }
+  
+  .status-dnd {
+    background-color: #57338B;
+  }
+  
+  .status-offline {
+    background-color: #747f8d;
+  }
+  
