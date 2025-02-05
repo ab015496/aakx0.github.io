@@ -1,175 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@aak</title>
+    <title>aak.x0 | ASCII Gallery</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://easyfiles.cc/2024/9/5e5f6ed9-8e17-4ed5-9b7a-1850d8c1273c/compressed/300ec1be178d153e97f20960d7d4d7d3.png" type="icon">
-
-    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #595959;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #frontPage {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #mainPage {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .buttons {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 100px;
+        }
+        .buttons a {
+            color: #595959;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 1px solid #595959;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #595959;
+            color: #000000;
+        }
+        .rain {
+            position: fixed;
+            width: 2px;
+            height: 10px;
+            background-color: #595959;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .fade-up {
+            opacity: 1;
+            transform: translateY(0);
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+        .bottom-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px;
+        }
+        .bottom-buttons button {
+            background: none;
+            color: #595959;
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+        .bottom-buttons button:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10px); }
+            to { transform: translateY(100vh); }
+        }
+        .intro-box {
+            width: 450px;
+            height: 350px;
+            border: 1px solid #595959;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+        }
+        img, video {
+            width: 500px;
+            height: 500px;
+            object-fit: cover; /* Ensures images/videos stretch or compress as necessary */
+        }
+    </style>
 </head>
-
-<body class="bg">
-
-
-    <div class="content">
-
-        <img class="banner"
-            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fchrisballinger.info%2Fimages%2Fbig-construction.gif&f=1&nofb=1&ipt=f8385453a87ebdb4c01b80d0be52331dae9af1548b69a0588b0f571bc17d0b20&ipo=images">
-
-
-
-        <marquee class="bewegende-text">This page has been thoroughly made by aak | <a
-                href="https://guns.lol/dl">guns.lol/dl</a> | <a href="https://slave.lol/d*">slave.lol/d*</a></marquee>
-        <hr>
-        <h1>/dl</h1>
-
-        <p>quick access</p>
-
-
-        <div class="links">
-            <li>
-                <a href="https://discord.com/users/1295846583631478888">
-                    <svg class="link" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000"
-                        style="--darkreader-inline-fill: #000000;" data-darkreader-inline-fill="">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <g>
-                                <path
-                                    d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
-                                    fill="#5865F2" fill-rule="nonzero" style="--darkreader-inline-fill: #0b1794;"
-                                    data-darkreader-inline-fill=""> </path>
-                            </g>
-                        </g>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="https://guns.bio/dl">
-                    <img class="link" src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="https://t.me/dl0aak">
-                    <svg class="link" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_87_7225)"></circle>
-                            <path
-                                d="M22.9866 10.2088C23.1112 9.40332 22.3454 8.76755 21.6292 9.082L7.36482 15.3448C6.85123 15.5703 6.8888 16.3483 7.42147 16.5179L10.3631 17.4547C10.9246 17.6335 11.5325 17.541 12.0228 17.2023L18.655 12.6203C18.855 12.4821 19.073 12.7665 18.9021 12.9426L14.1281 17.8646C13.665 18.3421 13.7569 19.1512 14.314 19.5005L19.659 22.8523C20.2585 23.2282 21.0297 22.8506 21.1418 22.1261L22.9866 10.2088Z"
-                                fill="white"></path>
-                            <defs>
-                                <linearGradient id="paint0_linear_87_7225" x1="16" y1="2" x2="16" y2="30"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#37BBFE"></stop>
-                                    <stop offset="1" stop-color="#007DBB"></stop>
-                                </linearGradient>
-                            </defs>
-                        </g>
-                    </svg>
-                </a>
-            </li>
+<body>
+    <div id="frontPage">
+        <h1>[Click to Continue]</h1>
+    </div>
+    
+    <div id="mainPage">
+        <div class="buttons">
+            <a href="https://guns.lol/dl" id="guns" target="_blank">Guns</a>
+            <a href="https://discord.com/users/1295846583631478888" id="discord" target="_blank">Discord</a>
+            <a href="https://roblox.com/users/3895636378/profile" id="roblox" target="_blank">Roblox</a>
+            <a href="https://t.me/dl0aak" id="telegram" target="_blank">Telegram</a>
         </div>
-        <br>
+        <div class="intro-box" id="introText">Hi there, my name's aak and I've made this site to prove to the world that you don't need coding skills to make a website. I've made this site entirely with ChatGPT and as you can see, the results speak for itself.<br><br><br> Tho I did conclude that you do require some coding knowledge (to see which part needs what). Other than that you don't need any extraordinary skills to make a site. <br><br> Take a look and enjoy the show :v] <br><br><br> (side note. If you're on mobile or iPad, use <br>"desktop mode" to see the content propperly. I cba to fix that)</div>
+        <div class="bottom-buttons">
+            <button onclick="showIntro()">Start</button>
+            <button onclick="showImage('https://easyfiles.cc/2025/2/3af13a6e-89e0-40a5-873b-6e65066c3754/ascii-art.png')">shkh</button>
+            <button onclick="showImage('https://easyfiles.cc/2025/2/ee630bbd-971c-43cb-a4ac-c71e711d5c38/ascii-art%20(1).png')">nqbi</button>
+            <button onclick="showImage('https://easyfiles.cc/2025/2/bc3ca376-18b6-4394-9c23-b2c7da5275ae/subwaysurfres.mp4')">sbsrfrs</button>
+            <button onclick="showImage('https://easyfiles.cc/2025/2/35a460b7-9a81-4eab-8ee1-667bb55b8c2f/ascii-art%20(2).png')">ktze</button>
+            <button onclick="showImage('https://easyfiles.cc/2025/2/f781ccf0-d0b8-4c3a-ac32-f78a3fc81681/05-02-25%20%20-%20%2023;00;27.png')">ascii tag</button>
+        </div>
     </div>
+    
+    <audio id="song" src="sonic.mp3"></audio>
+    
+    <script>
+        document.getElementById('frontPage').addEventListener('click', function() {
+            document.getElementById('frontPage').style.display = 'none';
+            document.getElementById('mainPage').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('mainPage').classList.add('fade-in');
+            }, 10);
+            document.getElementById('song').play();
+            startRain();
+        });
 
-    <button class="musicbutton" onclick="audio.play();">
-          click  🔊
-    </button>
+        function startRain() {
+            for (let i = 0; i < 100; i++) {
+                let rainDrop = document.createElement('div');
+                rainDrop.classList.add('rain');
+                document.body.appendChild(rainDrop);
+                rainDrop.style.left = Math.random() * window.innerWidth + 'px';
+                rainDrop.style.top = Math.random() * -window.innerHeight + 'px';
+                rainDrop.style.animationDuration = Math.random() * 2 + 2 + 's';
+            }
+        }
 
-    <script type="text/javascript">
-        const audio = new Audio();
-        audio.src = "./BFB OST _ Places.mp3"
+        function showImage(imageSrc) {
+            // Fade out the current content (intro)
+            const introText = document.getElementById('introText');
+            introText.classList.remove('fade-up');
+            introText.style.opacity = 0;
+
+            // Create media element (image or video)
+            let mediaElement;
+            if (imageSrc.endsWith('.jpg') || imageSrc.endsWith('.png') || imageSrc.endsWith('.jpeg') || imageSrc.endsWith('.gif')) {
+                mediaElement = document.createElement('img');
+                mediaElement.src = imageSrc;
+            } else if (imageSrc.endsWith('.mp4')) {
+                mediaElement = document.createElement('video');
+                mediaElement.src = imageSrc;
+                mediaElement.controls = true;
+            }
+
+            // Apply common styles
+            mediaElement.style.position = 'fixed';
+            mediaElement.style.top = '50%';
+            mediaElement.style.left = '50%';
+            mediaElement.style.transform = 'translate(-50%, -50%)';
+            mediaElement.style.background = '#000';
+            mediaElement.style.border = '5px solid #595959';
+            mediaElement.style.borderRadius = '10px';
+
+            // Add fade-up effect
+            mediaElement.classList.add('fade-up');
+
+            mediaElement.onclick = () => {
+                document.body.removeChild(mediaElement);
+            };
+
+            // Fade in the new media element
+            document.body.appendChild(mediaElement);
+        }
+
+        function showIntro() {
+            // Fade out the current content (media or images)
+            hideAllContent();
+
+            // Show the intro text with fade-up effect
+            const introText = document.getElementById('introText');
+            introText.classList.add('fade-up');
+            introText.style.opacity = 1;
+        }
+
+        function hideAllContent() {
+            // Remove all images, gifs, and videos from the page
+            const mediaElements = document.querySelectorAll('img, video');
+            mediaElements.forEach(media => media.remove());
+        }
     </script>
-
-    <div class="banner1">
-        <a href="https://www.roblox.com/users/3895636378/profile">
-            <img src="https://i.pinimg.com/736x/e0/0e/f7/e00ef7dab1353d16ed548622951e5ec6.jpg" class="bannerimage1">
-        </a>
-    </div>
-
-    <div class="banner2">
-        <a href="https://fentseller.lol/">
-            <img src="https://avatars.githubusercontent.com/u/117040076?v=4g" class="bannerimage2">
-        </a>
-    </div>
-
-
-    <!--About me / div2 in CSS-->
-    <div class="div2">
-        <h1>About me</h1>
-
-        <p>Hi my name's aak and i am 18+ years old.
-            I tend to be curious about some stuff that are nun of my business but I still find it pleasing to
-            explore.
-            Whatever I do is usually out of boredom. But that's what makes my exploring journey so much fun.
-            This might be read by people who'll be stalking me when I grow older.
-            It doesn't matter tho. Aslong as people're able to enjoy the fun stuff I have prepared for them on this
-            self-made webpage,
-            that'll suffice for their own sense of pleasure. People're human after all.
-            <br><br>
-            If you read this at any point in your life. Greetings 👋
-        </p>
-
-    </div>
-
-    <br>
-
-    <!--Socials / div3 in CSS-->
-    <div class="div3">
-        <h1>Socials</h1>
-
-        <a href="https://discord.com/users/1295846583631478888">
-            <Button class="knop">Discord</Button>
-        </a>
-
-        <a href="https://guns.lol/dl">
-            <Button class="knop">Guns</Button>
-        </a>
-
-        <a href="https://t.me/dl0aak">
-            <Button class="knop">Telegram</Button>
-        </a>
-
-        <a href="https://www.reddit.com/user/4aak/">
-            <Button class="knop">Reddit</Button>
-        </a>
-
-        <a href="https://github.com/dl0aak">
-            <Button class="knop">Github</Button>
-        </a>
-
-        <br><br>
-
-
-    </div>
-
-    <br>
-
-
-    <div class="div4">
-<center>
-    <h1>Activity</h1>
-        <div class="profile-card">
-            <div class="avatar-container">
-              <img src="https://easyfiles.cc/2024/12/b4cc74bb-f41e-446a-8714-d6cd66238e5c/rolox2.jpg" alt="Avatar" class="avatar">
-              <span class="status-indicator" id="status"></span>
-            </div>
-            <div class="profile-info">
-              <h3 id="username">dl0a</h3>
-              <p id="activity">streaming ストーカーをやめる</p>
-            </div>
-          </div>
-          <script src="script.js"></script>
-</center>
-       </div>
-
-  
-    </body>
-
+</body>
 </html>
