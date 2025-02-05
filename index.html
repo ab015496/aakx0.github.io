@@ -169,4 +169,68 @@
         });
 
         function startRain() {
-            for (let i = 0
+            for (let i = 0; i < 100; i++) {
+                let rainDrop = document.createElement('div');
+                rainDrop.classList.add('rain');
+                document.body.appendChild(rainDrop);
+                rainDrop.style.left = Math.random() * window.innerWidth + 'px';
+                rainDrop.style.top = Math.random() * -window.innerHeight + 'px';
+                rainDrop.style.animationDuration = Math.random() * 2 + 2 + 's';
+            }
+        }
+
+        function showImage(imageSrc) {
+            // Fade out the current content (intro)
+            const introText = document.getElementById('introText');
+            introText.classList.remove('fade-up');
+            introText.style.opacity = 0;
+
+            // Create media element (image or video)
+            let mediaElement;
+            if (imageSrc.endsWith('.jpg') || imageSrc.endsWith('.png') || imageSrc.endsWith('.jpeg') || imageSrc.endsWith('.gif')) {
+                mediaElement = document.createElement('img');
+                mediaElement.src = imageSrc;
+            } else if (imageSrc.endsWith('.mp4')) {
+                mediaElement = document.createElement('video');
+                mediaElement.src = imageSrc;
+                mediaElement.controls = true;
+            }
+
+            // Apply common styles
+            mediaElement.style.position = 'fixed';
+            mediaElement.style.top = '50%';
+            mediaElement.style.left = '50%';
+            mediaElement.style.transform = 'translate(-50%, -50%)';
+            mediaElement.style.background = '#000';
+            mediaElement.style.border = '5px solid #595959';
+            mediaElement.style.borderRadius = '10px';
+
+            // Add fade-up effect
+            mediaElement.classList.add('fade-up');
+
+            mediaElement.onclick = () => {
+                document.body.removeChild(mediaElement);
+            };
+
+            // Fade in the new media element
+            document.body.appendChild(mediaElement);
+        }
+
+        function showIntro() {
+            // Fade out the current content (media or images)
+            hideAllContent();
+
+            // Show the intro text with fade-up effect
+            const introText = document.getElementById('introText');
+            introText.classList.add('fade-up');
+            introText.style.opacity = 1;
+        }
+
+        function hideAllContent() {
+            // Remove all images, gifs, and videos from the page
+            const mediaElements = document.querySelectorAll('img, video');
+            mediaElements.forEach(media => media.remove());
+        }
+    </script>
+</body>
+</html>
