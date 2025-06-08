@@ -3,226 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aak.x0 | ASCII Gallery</title>
-
-    <!-- Open Graph Meta Tags for Discord and WhatsApp Embeds -->
-    <meta property="og:title" content="aak.x0 | ASCII Gallery">
-    <meta property="og:description" content="aak.x0 fr">
-    <meta property="og:image" content="https://easyfiles.cc/2024/9/5e5f6ed9-8e17-4ed5-9b7a-1850d8c1273c/compressed/300ec1be178d153e97f20960d7d4d7d3.png">
-    <meta property="og:url" content="https://yourwebsite.com"> <!-- Replace with your website URL -->
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags (optional) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="aak.x0 | ASCII Gallery">
-    <meta name="twitter:description" content="aak.x0 fr">
-    <meta name="twitter:image" content="https://easyfiles.cc/2024/9/5e5f6ed9-8e17-4ed5-9b7a-1850d8c1273c/compressed/300ec1be178d153e97f20960d7d4d7d3.png">
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://easyfiles.cc/2024/9/5e5f6ed9-8e17-4ed5-9b7a-1850d8c1273c/compressed/300ec1be178d153e97f20960d7d4d7d3.png" type="icon">
+    <title>Discord Account Checker</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000;
-            color: #595959;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            color: white;
+        }
+        
+        .result-box {
+            width: 300px;
+            padding: 30px;
+            border-radius: 10px;
             text-align: center;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
+            box-shadow: 0 0 20px;
+            transition: all 0.3s ease;
         }
-        #frontPage {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 10; /* Ensure it's on top of other content */
+        
+        .not-termed {
+            border: 3px solid #2ecc71;
+            color: #2ecc71;
+            box-shadow: 0 0 20px #2ecc71;
+            animation: pulse-green 2s infinite;
         }
-        #mainPage {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        
+        .termed {
+            border: 3px solid #e74c3c;
+            color: #e74c3c;
+            box-shadow: 0 0 20px #e74c3c;
+            animation: pulse-red 2s infinite;
         }
-        .buttons {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 100px;
+        
+        .error {
+            border: 3px solid #f39c12;
+            color: #f39c12;
+            box-shadow: 0 0 20px #f39c12;
         }
-        .buttons a {
-            color: #595959;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: 1px solid #595959;
-            border-radius: 5px;
-            transition: 0.3s;
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid currentColor;
         }
-        .buttons a:hover {
-            background-color: #595959;
-            color: #000000;
+        
+        .username {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-        .rain {
-            position: fixed;
-            width: 2px;
-            height: 10px;
-            background-color: #595959;
-            opacity: 0.7;
-            animation: fall linear infinite;
+        
+        .status {
+            font-size: 1.2rem;
         }
-        .fade-in {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        
+        .loading {
+            border-color: #3498db;
+            color: #3498db;
         }
-        .fade-up {
-            opacity: 1;
-            transform: translateY(0);
-            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 10px #2ecc71; }
+            50% { box-shadow: 0 0 30px #2ecc71; }
+            100% { box-shadow: 0 0 10px #2ecc71; }
         }
-        .bottom-buttons {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 50px;
-        }
-        .bottom-buttons button {
-            background: none;
-            color: #595959;
-            font-size: 18px;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
-        }
-        .bottom-buttons button:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px #ffffff;
-        }
-        @keyframes fall {
-            from { transform: translateY(-10px); }
-            to { transform: translateY(100vh); }
-        }
-        .intro-box {
-            width: 450px;
-            height: 350px;
-            border: 1px solid #595959;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            opacity: 0;
-        }
-        img, video {
-            width: 500px;
-            height: 500px;
-            object-fit: cover; /* Ensures images/videos stretch or compress as necessary */
+        
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 10px #e74c3c; }
+            50% { box-shadow: 0 0 30px #e74c3c; }
+            100% { box-shadow: 0 0 10px #e74c3c; }
         }
     </style>
 </head>
 <body>
-    <div id="frontPage">
-        <h1 style="cursor: pointer;" onclick="enterSite()">[Click to Continue]</h1>
+    <div class="result-box loading" id="resultBox">
+        <img id="userAvatar" class="avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar">
+        <div class="username" id="username">Loading...</div>
+        <div class="status" id="status">Checking account status</div>
     </div>
-    
-    <div id="mainPage">
-        <div class="buttons">
-            <a href="https://guns.lol/dl" id="guns" target="_blank">Guns</a>
-            <a href="https://discord.com/users/1295846583631478888" id="discord" target="_blank">Discord</a>
-            <a href="https://roblox.com/users/3895636378/profile" id="roblox" target="_blank">Roblox</a>
-            <a href="https://t.me/dl0aak" id="telegram" target="_blank">Telegram</a>
-        </div>
-        <div class="intro-box" id="introText">Hi there, my name's aak and I've made this site to prove to the world that you don't need coding skills to make a website. I've made this site entirely with ChatGPT and as you can see, the results speak for itself.<br><br><br> Tho I did conclude that you do require some coding knowledge (to see which part needs what). Other than that you don't need any extraordinary skills to make a site. <br><br> Take a look and enjoy the show :v] <br><br><br> (side note. If you're on mobile or iPad, use <br>"desktop mode" to see the content propperly. I cba to fix that)</div>
-        <div class="bottom-buttons">
-            <button onclick="showIntro()">Start</button>
-            <button onclick="showImage('https://easyfiles.cc/2025/2/3af13a6e-89e0-40a5-873b-6e65066c3754/ascii-art.png')">shkh</button>
-            <button onclick="showImage('https://easyfiles.cc/2025/2/ee630bbd-971c-43cb-a4ac-c71e711d5c38/ascii-art%20(1).png')">nqbi</button>
-            <button onclick="showImage('https://easyfiles.cc/2025/2/bc3ca376-18b6-4394-9c23-b2c7da5275ae/subwaysurfres.mp4')">sbsrfrs</button>
-            <button onclick="showImage('https://easyfiles.cc/2025/2/35a460b7-9a81-4eab-8ee1-667bb55b8c2f/ascii-art%20(2).png')">ktze</button>
-            <button onclick="showImage('https://easyfiles.cc/2025/2/f781ccf0-d0b8-4c3a-ac32-f78a3fc81681/05-02-25%20%20-%20%2023;00;27.png')">ascii tag</button>
-        </div>
-    </div>
-    
-    <audio id="song" src="sonic.mp3"></audio>
-    
+
     <script>
-        function enterSite() {
-            // Hide the frontPage and show the mainPage
-            document.getElementById('frontPage').style.display = 'none';
-            document.getElementById('mainPage').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById('mainPage').classList.add('fade-in');
-            }, 10);
-            document.getElementById('song').play();
-            startRain();
-        }
-
-        function startRain() {
-            for (let i = 0; i < 100; i++) {
-                let rainDrop = document.createElement('div');
-                rainDrop.classList.add('rain');
-                document.body.appendChild(rainDrop);
-                rainDrop.style.left = Math.random() * window.innerWidth + 'px';
-                rainDrop.style.top = Math.random() * -window.innerHeight + 'px';
-                rainDrop.style.animationDuration = Math.random() * 2 + 2 + 's';
+        // Your Discord User ID
+        const USER_ID = '1295846583631478888';
+        
+        async function checkAccountStatus() {
+            const resultBox = document.getElementById('resultBox');
+            const usernameElement = document.getElementById('username');
+            const statusElement = document.getElementById('status');
+            const avatarElement = document.getElementById('userAvatar');
+            
+            try {
+                // Try multiple API endpoints for better reliability
+                const endpoints = [
+                    `https://api.lanyard.rest/v1/users/${USER_ID}`,
+                    `https://discord.com/api/v9/users/${USER_ID}`,
+                    `https://japi.rest/discord/v1/user/${USER_ID}`
+                ];
+                
+                let userData = null;
+                let lastError = null;
+                
+                // Try each endpoint until one works
+                for (const endpoint of endpoints) {
+                    try {
+                        const response = await fetch(endpoint, {
+                            headers: {
+                                // Some APIs may require a user agent
+                                'User-Agent': 'Mozilla/5.0'
+                            }
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`API returned ${response.status}`);
+                        }
+                        
+                        const data = await response.json();
+                        
+                        // Check if we got valid data
+                        if (data && (data.username || data.discord_user || data.id)) {
+                            userData = data;
+                            break;
+                        }
+                    } catch (error) {
+                        lastError = error;
+                        console.log(`Failed with ${endpoint}:`, error);
+                        continue;
+                    }
+                }
+                
+                if (!userData) {
+                    throw lastError || new Error('All API endpoints failed');
+                }
+                
+                // Extract user information based on API response structure
+                const userInfo = userData.discord_user || userData;
+                const username = userInfo.username;
+                const discriminator = userInfo.discriminator;
+                const avatar = userInfo.avatar;
+                
+                if (!username) {
+                    // Account is likely terminated
+                    resultBox.className = 'result-box termed';
+                    usernameElement.textContent = 'Unknown User';
+                    statusElement.textContent = 'Account is terminated';
+                    avatarElement.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                } else {
+                    // Account exists
+                    resultBox.className = 'result-box not-termed';
+                    usernameElement.textContent = `${username}${discriminator ? `#${discriminator}` : ''}`;
+                    statusElement.textContent = 'Account is active';
+                    
+                    // Set avatar
+                    if (avatar) {
+                        const avatarUrl = `https://cdn.discordapp.com/avatars/${USER_ID}/${avatar}.png?size=256`;
+                        avatarElement.src = avatarUrl;
+                    } else {
+                        // Use default avatar based on discriminator or random
+                        const defaultAvatarNum = discriminator ? discriminator % 5 : Math.floor(Math.random() * 5);
+                        avatarElement.src = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarNum}.png`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking account status:', error);
+                resultBox.className = 'result-box error';
+                usernameElement.textContent = 'Connection Error';
+                statusElement.textContent = 'Failed to check account status';
+                
+                // Provide troubleshooting tips
+                setTimeout(() => {
+                    statusElement.innerHTML = 'Failed to check account status<br><small>Possible reasons:<br>1. You\'re blocking API requests<br>2. APIs are down<br>3. Your account is private</small>';
+                }, 2000);
             }
         }
-
-        function showImage(imageSrc) {
-            const introText = document.getElementById('introText');
-            introText.classList.remove('fade-up');
-            introText.style.opacity = 0;
-
-            let mediaElement;
-            if (imageSrc.endsWith('.jpg') || imageSrc.endsWith('.png') || imageSrc.endsWith('.jpeg') || imageSrc.endsWith('.gif')) {
-                mediaElement = document.createElement('img');
-                mediaElement.src = imageSrc;
-            } else if (imageSrc.endsWith('.mp4')) {
-                mediaElement = document.createElement('video');
-                mediaElement.src = imageSrc;
-                mediaElement.controls = true;
-            }
-
-            mediaElement.style.position = 'fixed';
-            mediaElement.style.top = '50%';
-            mediaElement.style.left = '50%';
-            mediaElement.style.transform = 'translate(-50%, -50%)';
-            mediaElement.style.background = '#000';
-            mediaElement.style.border = '5px solid #595959';
-            mediaElement.style.borderRadius = '10px';
-            mediaElement.classList.add('fade-up');
-
-            mediaElement.onclick = () => {
-                document.body.removeChild(mediaElement);
-            };
-
-            document.body.appendChild(mediaElement);
-        }
-
-        function showIntro() {
-            hideAllContent();
-            const introText = document.getElementById('introText');
-            introText.classList.add('fade-up');
-            introText.style.opacity = 1;
-        }
-
-        function hideAllContent() {
-            const mediaElements = document.querySelectorAll('img, video');
-            mediaElements.forEach(media => media.remove());
-        }
+        
+        // Start checking when page loads
+        window.addEventListener('DOMContentLoaded', checkAccountStatus);
     </script>
 </body>
 </html>
